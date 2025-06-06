@@ -1,15 +1,17 @@
 <template>
-  <Header />
-  <main class="grow-1">
-    <Home />
+  <HeaderComponent />
+  <main class="grow-1 bg-purple-200">
+    <div class="max-w-[1200px] mx-auto px-[15px]">
+      <HomeComponent />
+    </div>
   </main>
-  <Footer />
+  <FooterComponent />
 </template>
 
 <script setup lang="ts">
-import Footer from './components/Footer.vue';
-import Header from './components/Header.vue';
-import Home from './components/Home.vue';
+import FooterComponent from './components/FooterComponent.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
+import HomeComponent from './components/HomeComponent.vue';
 
 </script>
 
