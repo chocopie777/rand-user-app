@@ -1,14 +1,16 @@
-import type { User } from '@/types/user'
+import type { User } from '@/types/User'
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { useFilterStore } from './filterStore'
 
 export const useRandomUserStore = defineStore('randomUser', () => {
   const user = ref<User | null>(null)
+  const filterStore = useFilterStore()
 
   async function getRandomUser() {
     try {
-      const result = await axios.get("https://randomuser.me/api/")
+      const result = await axios.get(`https://randomuser.me/api/?${filterStore.genderFilterValue !== 'Any' ? `gender=${filterStore.genderFilterValue}&` : ''}${filterStore.nationalityFilterValue !== 'Any' ?  `nat=${filterStore.nationalityFilterValue}` : ''}`)
       user.value = {
         email: result.data.results[0].email,
         gender: result.data.results[0].gender,
