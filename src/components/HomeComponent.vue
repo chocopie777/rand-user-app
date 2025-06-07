@@ -18,32 +18,32 @@
       <div class="grow-1">
         <div class="text-lg text-purple-700 font-medium flex flex-col">
           <span>Name: </span>
-          <span v-if="isLoading" class="text-black font-extrabold">Loading data...</span>
-          <span v-else class="text-black font-extrabold">{{ randomUserStore.user?.name.first }} {{ randomUserStore.user?.name.last }}</span>
+          <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
+          <span v-else class="text-black font-bold">{{ randomUserStore.user?.name.first }} {{ randomUserStore.user?.name.last }}</span>
         </div>
         <div class="border-b border-y-purple-500 opacity-50 mt-1"></div>
         <div class="text-lg text-purple-700 font-medium mt-1 flex flex-col">
           <span>Gender: </span>
-          <span v-if="isLoading" class="text-black font-extrabold">Loading data...</span>
-          <span v-else class="text-black font-extrabold">{{ randomUserStore.user?.gender }}</span>
+          <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
+          <span v-else class="text-black font-bold">{{ randomUserStore.user?.gender }}</span>
         </div>
         <div class="border-b border-y-purple-500 opacity-50 mt-1"></div>
         <div class="text-lg text-purple-700 font-medium mt-1 flex flex-col">
           <span>Email: </span>
-          <span v-if="isLoading" class="text-black font-extrabold">Loading data...</span>
-          <span v-else class="text-black font-extrabold">{{ randomUserStore.user?.email }}</span>
+          <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
+          <span v-else class="text-black font-bold">{{ randomUserStore.user?.email }}</span>
         </div>
         <div class="border-b border-y-purple-500 opacity-50 mt-1"></div>
         <div class="text-lg text-purple-700 font-medium mt-1 flex flex-col">
           <span>Phone: </span>
-          <span v-if="isLoading" class="text-black font-extrabold">Loading data...</span>
-          <span v-else class="text-black font-extrabold">{{ randomUserStore.user?.phone }}</span>
+          <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
+          <span v-else class="text-black font-bold">{{ randomUserStore.user?.phone }}</span>
         </div>
         <div class="border-b border-y-purple-500 opacity-50 mt-1"></div>
         <div class="text-lg text-purple-700 font-medium mt-1 flex flex-col">
           <span>Address: </span>
-          <span v-if="isLoading" class="text-black font-extrabold">Loading data...</span>
-          <span v-else class="text-black font-extrabold">{{ randomUserStore.user?.location.street.number }} {{ randomUserStore.user?.location.street.name }}, {{ randomUserStore.user?.location.city }}, {{ randomUserStore.user?.location.country }}</span>
+          <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
+          <span v-else class="text-black font-bold">{{ randomUserStore.user?.location.street.number }} {{ randomUserStore.user?.location.street.name }}, {{ randomUserStore.user?.location.city }}, {{ randomUserStore.user?.location.country }}</span>
         </div>
       </div>
     </div>
