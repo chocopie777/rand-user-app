@@ -1,6 +1,6 @@
 <template>
   <HeaderComponent />
-  <main class="grow-1 bg-purple-200">
+  <main class="grow-1 bg-indigo-200">
     <div class="max-w-[1200px] mx-auto px-[15px]">
       <HomeComponent />
     </div>
