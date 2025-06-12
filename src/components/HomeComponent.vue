@@ -82,9 +82,9 @@ onMounted(async () => {
 
 watch(() => randomUserStore.user, (newUser) => {
   const currentHistory = JSON.parse(localStorage.getItem('history') || '[]')
-  const updatedHistory = [newUser, ...currentHistory].slice(0,3)
+  const updatedHistory = [newUser, ...currentHistory].slice(0, 4)
   localStorage.setItem('history', JSON.stringify(updatedHistory))
-  history.value = updatedHistory
+  history.value = updatedHistory.slice(1,4)
 })
 </script>
 
