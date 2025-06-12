@@ -52,8 +52,9 @@
         </div>
       </div>
     </div>
-    <button @click="randomUserStore.getRandomUser"
-      class="mb-10 hover:shadow-2xl flex fill-white justify-center items-center bg-indigo-600 text-white text-xl font-medium py-2 w-full max-w-[500px] rounded-lg cursor-pointer mt-5 hover:bg-indigo-900 transition ">
+    <button @click="generateHandler"
+      :disabled="isLoading"
+      class="mb-10 hover:shadow-2xl flex fill-white justify-center items-center bg-indigo-600 text-white text-xl font-medium py-2 w-full max-w-[500px] rounded-lg cursor-pointer mt-5 hover:bg-indigo-900 transition disabled:bg-gray-500 disabled:hover:shadow-none disabled:cursor-default">
       <svg class="mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path
           d="M2 12c0 .999.381 1.902.989 2.604l-1.098.732-.587.392c-.814-1.025-1.304-2.318-1.304-3.728 0-3.313 2.687-6 6-6h9v-3l6 4-6 4v-3h-9c-2.206 0-4 1.794-4 4zm20.696-3.728l-.587.392-1.098.732c.608.702.989 1.605.989 2.604 0 2.206-1.795 4-4 4h-9v-3l-6 4 6 4v-3h9c3.313 0 6-2.687 6-6 0-1.41-.489-2.703-1.304-3.728z" />
@@ -86,6 +87,13 @@ watch(() => randomUserStore.user, (newUser) => {
   localStorage.setItem('history', JSON.stringify(updatedHistory))
   history.value = updatedHistory.slice(1,4)
 })
+
+async function generateHandler() {
+  isLoading.value = true
+  await randomUserStore.getRandomUser()
+  
+  isLoading.value = false
+}
 </script>
 
 <style scoped></style>

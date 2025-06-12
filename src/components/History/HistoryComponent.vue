@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-10">
     <h3 class="text-2xl font-medium mt-5 text-center">
       History:
     </h3>
