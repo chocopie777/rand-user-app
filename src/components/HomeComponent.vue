@@ -4,25 +4,47 @@
     <div
       class="w-50 h-50 relative rounded-[50%] overflow-hidden z-0 [filter:drop-shadow(0_4px_10px_rgba(168,85,247,0.5))]">
       <template v-if="isLoading">
-        <div class="bg-gray-400 absolute left-0 top-0 right-0 bottom-0">
-        </div>
         <svg class="absolute w-[50%] h-[50%] top-1/2 left-1/2 bottom-1/2 -translate-x-1/2 -translate-y-1/2"
           viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path class="fill-gray-300" fill-rule="evenodd" clip-rule="evenodd"
             d="M7.76961 2.76961C7.31092 3.2283 7 3.95051 7 5C7 6.2921 7.43561 7.60063 8.08205 8.5703C8.7576 9.58362 9.49429 10 10 10C10.5057 10 11.2424 9.58361 11.918 8.5703C12.5644 7.60063 13 6.2921 13 5C13 3.95051 12.6891 3.2283 12.2304 2.76961C11.7717 2.31092 11.0495 2 10 2C8.95051 2 8.2283 2.31092 7.76961 2.76961ZM13.0952 10.3275C13.2709 10.1201 13.4336 9.9024 13.5821 9.6797C14.4356 8.39937 15 6.7079 15 5C15 3.54949 14.5609 2.2717 13.6446 1.35539C12.7283 0.439083 11.4505 0 10 0C8.54949 0 7.27171 0.439083 6.3554 1.35539C5.43909 2.2717 5 3.54949 5 5C5 6.7079 5.5644 8.39937 6.41795 9.6797C6.56642 9.9024 6.72912 10.1201 6.90483 10.3275C5.82101 10.5549 4.72146 10.9105 3.7281 11.4243C1.71526 12.4654 8.86406e-05 14.248 5.77058e-05 16.9999C5.77058e-05 16.9999 5.77058e-05 17 5.77058e-05 16.9999L-9.15442e-05 18.9998C-0.000215164 20.6567 1.34297 22 2.99991 22H17.0001C18.6569 22 20.0001 20.6569 20.0001 19V17C20.0001 14.248 18.2848 12.4654 16.2719 11.4243C15.2786 10.9105 14.179 10.5549 13.0952 10.3275ZM10 12C8.36255 12 6.28064 12.3557 4.64696 13.2007C3.03485 14.0346 2.00006 15.2519 2.00006 17L1.99991 18.9999C1.99987 19.5522 2.44759 20 2.99991 20H17.0001C17.5523 20 18.0001 19.5523 18.0001 19V17C18.0001 15.252 16.9653 14.0346 15.3531 13.2007C13.7194 12.3557 11.6375 12 10 12Z"
             fill="black" />
         </svg>
+        <div class="absolute top-0 left-0 right-0 bottom-0 bg-gray-400 -z-1"></div>
       </template>
       <img v-else class="w-full h-full object-cover" :src="randomUserStore.user?.picture.large" alt="">
     </div>
     <div
-      class="flex justify-center max-w-[500px] w-full mx-auto bg-indigo-400 mt-5 rounded p-5 border-indigo-700 border-1">
+      class="flex flex-col justify-center max-w-[500px] w-full mx-auto bg-indigo-400 mt-5 rounded p-5 border-indigo-700 border-1">
+      <div v-if="!isLoading" class="flex justify-center items-center relative" @click="copyHandler">
+        <span class="border flex p-2 rounded-md cursor-pointer hover:text-white transition group">
+          <svg class="w-5 group-hover:fill-white transition" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 16 16">
+            <path
+              d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path
+              d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+          </svg>
+        </span>
+        <transition
+            enter-active-class="transition-opacity duration-300 ease-out"
+            enter-from-class="opacity-0"
+            enter-to-class="opacity-100"
+            leave-active-class="transition-opacity duration-300 ease-in"
+            leave-from-class="opacity-100"
+            leave-to-class="opacity-0"
+          >
+          <div v-if="showNotification" class="absolute bg-gray-500 p-2 rounded top-11 text-gray-200">скопирован</div>
+        </transition>
+      </div>
       <div class="grow-1">
         <div class="text-lg text-white font-medium flex flex-col">
           <span>Name: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">{{ randomUserStore.user?.name.first }} {{
-            randomUserStore.user?.name.last }}</span>
+          <span v-else class="text-black font-bold">
+            {{ randomUserStore.user?.name.first }}
+            {{ randomUserStore.user?.name.last }}
+          </span>
         </div>
         <div class="border-b border-y-black-500 opacity-50 mt-1"></div>
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
@@ -46,14 +68,16 @@
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
           <span>Address: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">{{ randomUserStore.user?.location.street.number }} {{
-            randomUserStore.user?.location.street.name }}, {{ randomUserStore.user?.location.city }}, {{
-              randomUserStore.user?.location.country }}</span>
+          <span v-else class="text-black font-bold">
+            {{ randomUserStore.user?.location.street.number }}
+            {{ randomUserStore.user?.location.street.name }},
+            {{ randomUserStore.user?.location.city }},
+            {{ randomUserStore.user?.location.country }}
+          </span>
         </div>
       </div>
     </div>
-    <button @click="generateHandler"
-      :disabled="isLoading"
+    <button @click="generateHandler" :disabled="isLoading"
       class="mb-10 hover:shadow-2xl flex fill-white justify-center items-center bg-indigo-600 text-white text-xl font-medium py-2 w-full max-w-[500px] rounded-lg cursor-pointer mt-5 hover:bg-indigo-900 transition disabled:bg-gray-500 disabled:hover:shadow-none disabled:cursor-default">
       <svg class="mr-2 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path
@@ -62,7 +86,7 @@
       Generate
     </button>
   </div>
-  <HistoryComponent :is-loading="isLoading" :users-history="history"/>
+  <HistoryComponent :is-loading="isLoading" :users-history="history" />
 </template>
 
 <script setup lang="ts">
@@ -74,6 +98,7 @@ import type { User } from '@/types/User';
 const randomUserStore = useRandomUserStore()
 const isLoading = ref(false)
 const history = ref<User[] | null>(null)
+const showNotification = ref(false)
 
 onMounted(async () => {
   isLoading.value = true
@@ -85,15 +110,32 @@ watch(() => randomUserStore.user, (newUser) => {
   const currentHistory = JSON.parse(localStorage.getItem('history') || '[]')
   const updatedHistory = [newUser, ...currentHistory].slice(0, 4)
   localStorage.setItem('history', JSON.stringify(updatedHistory))
-  history.value = updatedHistory.slice(1,4)
+  history.value = updatedHistory.slice(1, 4)
 })
 
 async function generateHandler() {
   isLoading.value = true
   await randomUserStore.getRandomUser()
-  
   isLoading.value = false
 }
+
+async function copyHandler() {
+  try {
+    await navigator.clipboard.writeText(`${randomUserStore.user?.name.first} ${randomUserStore.user?.name.last}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.gender}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.email}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.phone}\n${randomUserStore.user?.location.street.number}\n${randomUserStore.user?.location.street.name}\n${randomUserStore.user?.location.city}\n${randomUserStore.user?.location.country}\n`);
+    showNotification.value = true
+    console.log('Текст скопирован в буфер обмена');
+  } catch (err) {
+    console.error('Ошибка при копировании: ', err);
+  }
+}
+
+watch(() => showNotification.value, (newVal) => {
+  if (newVal) {
+    setTimeout(() => {
+      showNotification.value = false
+    }, 1500)
+  }
+})
 </script>
 
 <style scoped></style>
