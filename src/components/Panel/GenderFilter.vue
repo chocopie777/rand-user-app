@@ -7,7 +7,7 @@
       </svg>
       <span class="ml-2">{{ filterStore.genderFilterValue }}</span>
     </button>
-    <div v-if="isOpen" class="border-2 bg-indigo-300 border-indigo-500 absolute left-0 right-0 rounded-xl top-12 text-center text-lg overflow-hidden">
+    <div v-if="isOpen" class="border-2 bg-indigo-300 border-indigo-500 absolute left-0 right-0 rounded-xl top-12 text-center text-lg overflow-hidden z-1">
       <template v-for="gender in genders" :key="gender">
         <div class="cursor-pointer text-indigo-700 font-bold hover:bg-indigo-500 hover:text-white py-1" @click="filterHandler(gender)">{{ gender }}</div>
       </template>

@@ -8,10 +8,12 @@
       </svg>
       <span class="ml-2">{{ filterStore.nationalityFilterValue }}</span>
     </button>
-    <div v-if="isOpen" class="border-2 bg-indigo-300 border-indigo-500 absolute left-0 right-0 rounded-xl top-12 text-center text-lg max-h-30 overflow-auto">
-      <template v-for="nat in nationalities" :key="nat">
-        <div class="cursor-pointer text-indigo-700 font-bold hover:bg-indigo-500 hover:text-white py-1" @click="filterHandler(nat)">{{nat}}</div>
-      </template>
+    <div v-if="isOpen" class="border-2 bg-indigo-300 border-indigo-500 absolute left-0 right-0 rounded-xl top-12 text-center text-lg h-30 overflow-auto z-1">
+      <SimpleBar class="h-full" data-simplebar-auto-hide="false">
+        <template v-for="nat in nationalities" :key="nat">
+          <div class="cursor-pointer text-indigo-700 font-bold hover:bg-indigo-500 hover:text-white py-1" @click="filterHandler(nat)">{{nat}}</div>
+        </template>
+      </SimpleBar>
     </div>
   </div>
 </template>
@@ -19,6 +21,8 @@
 <script setup lang="ts">
 import { useFilterStore } from '@/stores/filterStore';
 import { ref } from 'vue';
+import SimpleBar from 'simplebar-vue';
+import '../../../node_modules/simplebar-vue/dist/simplebar.min.css';
 
 const filterStore = useFilterStore()
 const isOpen = ref(false)

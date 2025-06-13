@@ -41,7 +41,7 @@
         <div class="text-lg text-white font-medium flex flex-col">
           <span>Name: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">
+          <span v-else class="text-black font-bold break-words">
             {{ randomUserStore.user?.name.first }}
             {{ randomUserStore.user?.name.last }}
           </span>
@@ -50,25 +50,25 @@
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
           <span>Gender: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">{{ randomUserStore.user?.gender }}</span>
+          <span v-else class="text-black font-bold break-words">{{ randomUserStore.user?.gender }}</span>
         </div>
         <div class="border-b border-y-black-500 opacity-50 mt-1"></div>
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
           <span>Email: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">{{ randomUserStore.user?.email }}</span>
+          <span v-else class="text-black font-bold break-words">{{ randomUserStore.user?.email }}</span>
         </div>
         <div class="border-b border-y-black-500 opacity-50 mt-1"></div>
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
           <span>Phone: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">{{ randomUserStore.user?.phone }}</span>
+          <span v-else class="text-black font-bold break-words">{{ randomUserStore.user?.phone }}</span>
         </div>
         <div class="border-b border-y-black-500 opacity-50 mt-1"></div>
         <div class="text-lg text-white font-medium mt-1 flex flex-col">
           <span>Address: </span>
           <span v-if="isLoading" class="text-black font-bold">Loading data...</span>
-          <span v-else class="text-black font-bold">
+          <span v-else class="text-black font-bold break-words">
             {{ randomUserStore.user?.location.street.number }}
             {{ randomUserStore.user?.location.street.name }},
             {{ randomUserStore.user?.location.city }},
@@ -108,9 +108,9 @@ onMounted(async () => {
 
 watch(() => randomUserStore.user, (newUser) => {
   const currentHistory = JSON.parse(localStorage.getItem('history') || '[]')
-  const updatedHistory = [newUser, ...currentHistory].slice(0, 4)
+  const updatedHistory = [newUser, ...currentHistory].slice(0, 6)
   localStorage.setItem('history', JSON.stringify(updatedHistory))
-  history.value = updatedHistory.slice(1, 4)
+  history.value = updatedHistory.slice(1, 6)
 })
 
 async function generateHandler() {

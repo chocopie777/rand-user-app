@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative pr-2">
     <div class="w-50 h-50 relative rounded-[50%] overflow-hidden mb-3 cursor-pointer group peer pointer-events-none"
       @click="avatarHandler">
       <img class="w-full h-full object-cover pointer-events-auto" :src="userData?.picture.large" alt="avatar">
