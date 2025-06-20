@@ -123,7 +123,6 @@ async function copyHandler() {
   try {
     await navigator.clipboard.writeText(`${randomUserStore.user?.name.first} ${randomUserStore.user?.name.last}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.gender}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.email}\n${randomUserStore.user?.name.first} ${randomUserStore.user?.phone}\n${randomUserStore.user?.location.street.number}\n${randomUserStore.user?.location.street.name}\n${randomUserStore.user?.location.city}\n${randomUserStore.user?.location.country}\n`);
     showNotification.value = true
-    console.log('Текст скопирован в буфер обмена');
   } catch (err) {
     console.error('Ошибка при копировании: ', err);
   }

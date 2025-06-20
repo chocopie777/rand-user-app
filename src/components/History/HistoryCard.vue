@@ -26,7 +26,6 @@ const randomUserStore = useRandomUserStore()
 const props = defineProps({
   userData: { type: Object as PropType<User | null>, required: true }
 })
-console.log(props.userData)
 
 function avatarHandler() {
   randomUserStore.user = props.userData
