@@ -11,7 +11,6 @@
       <SimpleBar v-if="usersHistory" class="w-full" data-simplebar-auto-hide="false">
         <div class="flex justify-around">
           <template v-for="user in usersHistory" :key="user.name">
-            {{ console.log(user) }}
             <HistoryCard :user-data="user"/>
           </template>
         </div>
