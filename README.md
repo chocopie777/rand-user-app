@@ -1,39 +1,34 @@
-# rand-user-app
+# Rand-User-App
+Проект представляет собой веб-приложение для генерации случайного фейкового пользователя c использованием Vue 3, TypeScript и randomuser API.
 
-This template should help get you started developing with Vue 3 in Vite.
+[**_<ins>Ссылка на приложение</ins>_**](https://rand-user-app.vercel.app/)
 
-## Recommended IDE Setup
+## 🚀 Демо 
+*Пример работы приложения* 
+![Демо проекта](demo.gif)  
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🛠 Технологии  
+- **Frontend**: Vue 3, TypeScript, Axios, Pinia, Tailwind, Vite, Simplebar
+- **Backend**: API https://randomuser.me/
+- **Deploy**: Vercel  
 
-## Type Support for `.vue` Imports in TS
+## ⚡️ Функционал 
+✅ Генерация случайного фейкового пользователя
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+✅ Выбор пола генерируемого пользователя
 
-## Customize configuration
+✅ Выбор национальности генерируемого пользователя
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+✅ Копирование данных сгенерированного пользователя
 
-## Project Setup
+✅ Сохранение последних сгенерированных пользователей в LocalStorage
 
-```sh
+✅ Адаптивный интерфейс
+
+## 🚀 Установка  
+```bash
+git clone https://github.com/chocopie777/rand-user-app.git
+
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
